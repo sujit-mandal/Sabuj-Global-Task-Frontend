@@ -2,8 +2,8 @@ import logo from "../assets/logo.png";
 
 const Topnav = () => {
   return (
-    <div className="bg-[#D9D9D9]">
-      <div className="max-w-screen-xl mx-auto h-36 flex items-center justify-between">
+    <div className="bg-[#D9D9D9] fixed top-0 left-0 right-0 z-50">
+      <div className="max-w-screen-xl mx-auto h-28 flex items-center justify-between">
         <img src={logo} alt="logo " />
         <div className="flex items-center gap-8">
           <span className="inline-flex items-center gap-3">

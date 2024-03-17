@@ -1,39 +1,34 @@
-import { useState } from "react";
-
-const INITIAL_VALUES = {
-  firstName: "",
-  lastName: "",
-  emailAddress: "",
-  mobileNumber: "",
-  preferredCourse: "",
-  studyTimeframe: "",
-  nearestOffice: "",
-  fundingMethod: "",
-  studyLevel: "",
-  termsAgreement: false,
-  contactAgreement: false,
-  updatesAgreement: false,
-};
+import axios from "axios";
+import { useRef, useState } from "react";
 
 const StudentInfo = () => {
-  const [formData, setFormData] = useState(INITIAL_VALUES);
   const [errorMessage, setErrorMessage] = useState(null);
-
-  const handleChange = (event) => {
-    const { name, value, type } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === "checkbox" ? event.target.checked : value,
-    }));
-  };
-
+  const formRef = useRef(null);
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (true) {
-      console.log("Form submitted:", formData);
-      setFormData(INITIAL_VALUES);
+    if (event.target.termsAgreement) {
+      const formDataFromInputs = {
+        firstName: event.target.firstName.value,
+        lastName: event.target.lastName.value,
+        emailAddress: event.target.emailAddress.value,
+        mobileNumber: event.target.mobileNumber.value,
+        preferredCourse: event.target.preferredCourse.value,
+        studyTimeFrame: event.target.studyTimeFrame.value,
+        nearestOffice: event.target.nearestOffice.value,
+        fundingMethod: event.target.fundingMethod.value,
+        studyLevel: event.target.studyLevel.value,
+        termsAgreement: event.target.termsAgreement.checked,
+        contactAgreement: event.target.contactAgreement.checked,
+        updatesAgreement: event.target.updatesAgreement.checked,
+      };
+      console.log("Form submitted:", formDataFromInputs);
       setErrorMessage(null);
+      axios.post(
+        "http://localhost:5000/post-student-info",
+        formDataFromInputs
+      );
+      formRef.current.reset();
     } else {
       setErrorMessage("Please check the form for any errors.");
     }
@@ -52,48 +47,53 @@ const StudentInfo = () => {
         </div>
         <form
           onSubmit={handleSubmit}
+          ref={formRef}
           className="flex flex-col w-full px-5 py-10 space-y-10"
         >
-          <div className="">
+          <div>
             <input
               type="text"
+              id="firstName"
               className="w-full border-b border-[#949392] bg-transparent py-2 text-gray-700 focus:outline-none  placeholder:text-xl"
               placeholder="First Name*"
+              required
             />
           </div>
-          <div className="">
+          <div>
             <input
               type="text"
+              id="lastName"
               className="w-full border-b border-[#949392] bg-transparent py-2 text-gray-700 focus:outline-none  placeholder:text-xl"
               placeholder="Last Name*"
+              required
             />
           </div>
-          <div className="">
+          <div>
             <input
-              type="text"
+              type="email"
+              id="emailAddress"
               className="w-full border-b border-[#949392] bg-transparent py-2 text-gray-700 focus:outline-none  placeholder:text-xl"
               placeholder="Email Address*"
+              required
             />
           </div>
-          <div className="">
+          <div>
             <input
-              type="text"
+              type="number"
+              id="mobileNumber"
               className="w-full border-b border-[#949392] bg-transparent py-2 text-gray-700 focus:outline-none  placeholder:text-xl"
               placeholder="Mobile Number*"
+              required
             />
           </div>
           <div className="flex flex-col mb-4">
-            <label
-              htmlFor="preferredCourse"
-              className="mb-2 text-gray-700 text-xl opacity-55"
-            >
+            <label className="mb-2 text-gray-700 text-xl opacity-55">
               Your Preferred Study Course*
             </label>
             <select
               id="preferredCourse"
               name="preferredCourse"
-              value={formData.preferredCourse}
-              onChange={handleChange}
+              required
               className="border-b border-[#949392] bg-transparent py-2  focus:outline-none focus:ring-1 focus:ring-[#949392] focus:rounded-lg"
             >
               <option value="">Please Select</option>
@@ -101,90 +101,85 @@ const StudentInfo = () => {
               <option value="ui-design">UI Design</option>
               <option value="web-development">Web Development</option>
               <option value="data-science">Data Science</option>
+              <option value="bio-tech">Bio Tech</option>
             </select>
           </div>
           <div className="flex flex-col mb-4">
-            <label
-              htmlFor="preferredCourse"
-              className="mb-2 text-gray-700 text-xl opacity-55"
-            >
+            <label className="mb-2 text-gray-700 text-xl opacity-55">
               When Do You Plan to Study?*
             </label>
             <select
-              id="preferredCourse"
-              name="preferredCourse"
-              value={formData.preferredCourse}
-              onChange={handleChange}
+              id="studyTimeFrame"
+              name="studyTimeFrame"
+              required
               className="border-b border-[#949392] bg-transparent py-2  focus:outline-none focus:ring-1 focus:ring-[#949392] focus:rounded-lg"
             >
               <option value="">Please Select</option>
-              <option value="ux-design">UX Design</option>
-              <option value="ui-design">UI Design</option>
-              <option value="web-development">Web Development</option>
-              <option value="data-science">Data Science</option>
+              <option value="Mar-24">March 2024</option>
+              <option value="Jun-24">June 2024</option>
+              <option value="Sep-24">September 2024</option>
+              <option value="Jan-25">January 2025</option>
             </select>
           </div>
           <div className="flex flex-col mb-4">
-            <label
-              htmlFor="preferredCourse"
-              className="mb-2 text-gray-700 text-xl opacity-55"
-            >
+            <label className="mb-2 text-gray-700 text-xl opacity-55">
               Nearest SG Office*
             </label>
             <select
-              id="preferredCourse"
-              name="preferredCourse"
-              value={formData.preferredCourse}
-              onChange={handleChange}
+              id="nearestOffice"
+              name="nearestOffice"
+              required
               className="border-b border-[#949392] bg-transparent py-2  focus:outline-none focus:ring-1 focus:ring-[#949392] focus:rounded-lg"
             >
               <option value="">Please Select</option>
-              <option value="ux-design">UX Design</option>
-              <option value="ui-design">UI Design</option>
-              <option value="web-development">Web Development</option>
-              <option value="data-science">Data Science</option>
+              <option value="Dhaka-Office">DHAKA OFFICE</option>
+              <option value="Chittogram-Office">CHATTOGRAM OFFICE</option>
+              <option value="Khulna-Office">KHULNA OFFICE</option>
+              <option value="Sylhet-Office">SYLHET OFFICE</option>
+              <option value="India-Office">INDIA OFFICE</option>
+              <option value="Nigeria-Office (Abuja)">
+                Nigeria Office (Abuja)
+              </option>
+              <option value="Nigeria-Office (Lagos)">
+                Nigeria Office (Lagos)
+              </option>
+              <option value="Vietnam-Office">VIETNAM OFFICE</option>
+              <option value="Head-Office">
+                SHABUJ GLOBAL LONDON (HEAD OFFICE)
+              </option>
             </select>
           </div>
           <div className="flex flex-col mb-4">
-            <label
-              htmlFor="preferredCourse"
-              className="mb-2 text-gray-700 text-xl opacity-55"
-            >
+            <label className="mb-2 text-gray-700 text-xl opacity-55">
               How Would You Fund Your Course?*
             </label>
             <select
-              id="preferredCourse"
-              name="preferredCourse"
-              value={formData.preferredCourse}
-              onChange={handleChange}
+              id="fundingMethod"
+              name="fundingMethod"
+              required
               className="border-b border-[#949392] bg-transparent py-2  focus:outline-none focus:ring-1 focus:ring-[#949392] focus:rounded-lg"
             >
               <option value="">Please Select</option>
-              <option value="ux-design">UX Design</option>
-              <option value="ui-design">UI Design</option>
-              <option value="web-development">Web Development</option>
-              <option value="data-science">Data Science</option>
+              <option value="personal-savings">Personal Savings</option>
+              <option value="family-income">Family Income</option>
+              <option value="scholarship">Scholarship</option>
             </select>
           </div>
           <div className="flex flex-col mb-4">
-            <label
-              htmlFor="preferredCourse"
-              className="mb-2 text-gray-700 text-xl opacity-55"
-            >
+            <label className="mb-2 text-gray-700 text-xl opacity-55">
               Preferred Study Level*
             </label>
             <select
-              id="preferredCourse"
-              name="preferredCourse"
-              value={formData.preferredCourse}
-              onChange={handleChange}
+              id="studyLevel"
+              name="studyLevel"
+              required
               className="mb-8 border-b border-[#949392] bg-transparent py-2  focus:outline-none focus:ring-1 focus:ring-[#949392] focus:rounded-lg"
             >
               <option value="">Please Select</option>
-              <option value="ux-design">UX Design</option>
-              <option value="ui-design">UI Design</option>
-              <option value="web-development">Web Development</option>
-              <option value="data-science">Data Science</option>
+              <option value="12'th">12'th</option>
+              <option value="under-graduate">Under Graduate</option>
+              <option value="post-graduate">Post Graduate</option>
+              <option value="phd">PHD</option>
             </select>
           </div>
           <div className="flex flex-col mb-4 text-xl space-y-6">
@@ -197,8 +192,7 @@ const StudentInfo = () => {
                 type="checkbox"
                 id="termsAgreement"
                 name="termsAgreement"
-                value={formData.termsAgreement}
-                onChange={handleChange}
+                required
                 className="mr-2 mt-2 accent-[#6750A4] focus:ring-0 "
               />
               <label htmlFor="termsAgreement" className="">
@@ -210,8 +204,6 @@ const StudentInfo = () => {
                 type="checkbox"
                 id="contactAgreement"
                 name="contactAgreement"
-                value={formData.contactAgreement}
-                onChange={handleChange}
                 className="mr-2 mt-2 accent-[#6750A4] focus:ring-0"
               />
               <label htmlFor="contactAgreement">
@@ -224,8 +216,6 @@ const StudentInfo = () => {
                 type="checkbox"
                 id="updatesAgreement"
                 name="updatesAgreement"
-                value={formData.updatesAgreement}
-                onChange={handleChange}
                 className="mr-2 mt-2 accent-[#6750A4] focus:ring-0"
               />
               <label htmlFor="updatesAgreement">

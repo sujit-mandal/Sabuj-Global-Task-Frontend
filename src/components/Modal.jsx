@@ -7,11 +7,29 @@ const tabs = [
   { label: "Events", content: "Events content" },
 ];
 
-const Modal = ({ setShowModal }) => {
+const Modal = ({ setShowModal, allBlog }) => {
   const [activeTab, setActiveTab] = useState(tabs[0].label);
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
 
   const handleClick = (label) => {
     setActiveTab(label);
+  };
+  const handleSearchChange = (event) => {
+    const keyword = event.target.value.toLowerCase();
+    setSearchKeyword(keyword);
+    filterBlogs(keyword);
+  };
+
+  const filterBlogs = (keyword) => {
+    if (keyword.trim() === "") {
+      setFilteredBlogs([]);
+    } else {
+      const filtered = allBlog?.filter((blog) =>
+        blog.title.toLowerCase().includes(keyword)
+      );
+      setFilteredBlogs(filtered);
+    }
   };
   return (
     <>
@@ -95,11 +113,18 @@ const Modal = ({ setShowModal }) => {
                     </svg>
                     <input
                       type="text"
+                      value={searchKeyword}
+                      onChange={handleSearchChange}
                       className="w-full pl-10 rounded-md border-b border-gray-300 py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-inset focus:ring-primary placeholder:text-2xl"
                       placeholder="Search Keywords"
                     />
                   </div>
                 )}
+                {filteredBlogs.map((blog) => (
+                  <div key={blog.title} className="text-black">
+                    <p className="text-lg font-medium">{blog.title}</p>
+                  </div>
+                ))}
                 {activeTab === "Find a University" && (
                   <div className="mb-3 relative">
                     <svg
@@ -148,35 +173,35 @@ const Modal = ({ setShowModal }) => {
                 )}
                 {activeTab === "Events" && (
                   <div className="mb-3 relative">
-                  <svg
-                    className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 26 26"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M11.75 21.75C17.2728 21.75 21.75 17.2728 21.75 11.75C21.75 6.22715 17.2728 1.75 11.75 1.75C6.22715 1.75 1.75 6.22715 1.75 11.75C1.75 17.2728 6.22715 21.75 11.75 21.75Z"
-                      stroke="#000"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                    <svg
+                      className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 26 26"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.75 21.75C17.2728 21.75 21.75 17.2728 21.75 11.75C21.75 6.22715 17.2728 1.75 11.75 1.75C6.22715 1.75 1.75 6.22715 1.75 11.75C1.75 17.2728 6.22715 21.75 11.75 21.75Z"
+                        stroke="#000"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M24.25 24.25L18.8125 18.8125"
+                        stroke="#000"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <input
+                      type="text"
+                      className="w-full pl-10 border-b border-gray-300 py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-inset focus:ring-primary placeholder:text-2xl"
+                      placeholder="Search Events"
                     />
-                    <path
-                      d="M24.25 24.25L18.8125 18.8125"
-                      stroke="#000"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <input
-                    type="text"
-                    className="w-full pl-10 border-b border-gray-300 py-2 px-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-inset focus:ring-primary placeholder:text-2xl"
-                    placeholder="Search Events"
-                  />
-                </div>
+                  </div>
                 )}
               </div>
               <div className="flex justify-end">
