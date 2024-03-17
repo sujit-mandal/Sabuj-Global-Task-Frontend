@@ -1,16 +1,15 @@
 import Navbar from "../components/Navbar";
 import Topnav from "../components/Topnav";
-
+import BlogDetails from "./BlogDetails";
 
 const Home = () => {
-    return (
-        <div className="font-Inter">
-            <Topnav/>
-            <Navbar/>
-            {/* <Multilevelnav/> */}
-            <h1 className="text-red-500 text-5xl">This is Homepage</h1>
-        </div>
-    );
+  return (
+    <div className="font-Inter">
+      <Topnav />
+      <Navbar />
+      <BlogDetails />
+    </div>
+  );
 };
 
 export default Home;
