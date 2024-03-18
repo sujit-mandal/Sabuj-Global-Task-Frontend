@@ -1,5 +1,6 @@
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+import { BlogContext } from "../Provider/Blogprovider";
+import { Link, useNavigate } from "react-router-dom";
 const tabs = [
   { label: "Search for Blogs", content: "Blog content" },
   { label: "Find a University", content: "Find a University content" },
@@ -7,7 +8,9 @@ const tabs = [
   { label: "Events", content: "Events content" },
 ];
 
-const Modal = ({ setShowModal, allBlog }) => {
+const Modal = ({ setShowModal }) => {
+  const navigate = useNavigate();
+  const allBlog = useContext(BlogContext);
   const [activeTab, setActiveTab] = useState(tabs[0].label);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [filteredBlogs, setFilteredBlogs] = useState([]);
@@ -29,6 +32,13 @@ const Modal = ({ setShowModal, allBlog }) => {
         blog.title.toLowerCase().includes(keyword)
       );
       setFilteredBlogs(filtered);
+    }
+  };
+  const handleMoveToDetails = () => {
+    if (filteredBlogs.length > 0) {
+      navigate("/filtered-blogs", { state: { filteredBlogs } });
+    } else {
+      console.warn("No filtered blogs to display");
     }
   };
   return (
@@ -122,7 +132,9 @@ const Modal = ({ setShowModal, allBlog }) => {
                 )}
                 {filteredBlogs.map((blog) => (
                   <div key={blog.title} className="text-black">
-                    <p className="text-lg font-medium">{blog.title}</p>
+                    <Link to={`/blog-details/${blog?._id}`}>
+                      <p className="text-lg font-medium cursor-pointer">{blog.title}</p>
+                    </Link>
                   </div>
                 ))}
                 {activeTab === "Find a University" && (
@@ -205,7 +217,7 @@ const Modal = ({ setShowModal, allBlog }) => {
                 )}
               </div>
               <div className="flex justify-end">
-                <button className="p-4">
+                <button className="p-4" onClick={handleMoveToDetails}>
                   <svg
                     width="56"
                     height="56"

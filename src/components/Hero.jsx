@@ -17,7 +17,7 @@ const Hero = () => {
           writing with a truly engaged and active community. Wavesmarathon is
           truly where ideas are born, shared and spread.
         </p>
-        <button className="px-14 py-5 bg-[#F0672B] text-white font-semibold text-xl rounded-full">Get Started</button>
+        <button className="px-14 py-5 bg-[#F0672B] text-white font-semibold text-xl rounded-full">Let's Start</button>
       </div>
       <div className="flex-1">
         <Lottie animationData={Girl} />

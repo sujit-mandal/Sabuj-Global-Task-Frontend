@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import cardImageOne from "../assets/image1.png";
 import cardImageTwo from "../assets/image2.png";
 import cardImageThree from "../assets/image3.png";
 import "./Navbar.css";
 import Modal from "./Modal";
 import Topnav from "./Topnav";
+import { Link } from "react-router-dom";
+import { BlogContext } from "../Provider/Blogprovider";
 
-const Navbar = ({ allBlog }) => {
+const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -34,9 +36,12 @@ const Navbar = ({ allBlog }) => {
                         className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
-                      <a href="#!" className="text-lg font-Poppins">
+                      <Link
+                        to={"https://www.shabujglobal.com"}
+                        className="text-lg font-Poppins"
+                      >
                         Study UI in SG
-                      </a>
+                      </Link>
                     </div>
                   </ul>
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
@@ -524,9 +529,7 @@ const Navbar = ({ allBlog }) => {
             </svg>
             Quick search
           </button>
-          {showModal ? (
-            <Modal setShowModal={setShowModal} allBlog={allBlog} />
-          ) : null}
+          {showModal ? <Modal setShowModal={setShowModal} /> : null}
         </div>
       </nav>
     </>

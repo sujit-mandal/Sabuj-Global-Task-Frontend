@@ -5,6 +5,8 @@ import * as XLSX from "xlsx";
 import Hero from "../components/Hero";
 import Card from "../components/Card";
 import { BlogContext } from "../Provider/Blogprovider";
+import Lottie from "lottie-react";
+import Download from "../Download.json";
 const Home = () => {
   const allBlog = useContext(BlogContext);
   const [showBlog, setShowBlog] = useState([]);
@@ -36,7 +38,7 @@ const Home = () => {
       return;
     }
 
-    const worksheet = XLSX.utils.json_to_sheet(allBlog);
+    const worksheet = XLSX.utils.json_to_sheet(allStudentInfo);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Student Data");
 
@@ -62,8 +64,13 @@ const Home = () => {
           ))}
         </div>
       </div>
-      {/* <BlogDetails allBlog={allBlog} /> */}
-      {/* <button onClick={handleDownload} className="bg-green-500 px-3 py-2 rounded-lg mb-10">Download</button> */}
+
+      <div className="max-w-screen-xl mx-auto flex items-center justify-center gap-10 my-10">
+        <h1 className="text-4xl font-bold">Click Download to get Student Information as Excel Sheet</h1>
+        <button onClick={handleDownload}>
+          <Lottie animationData={Download} />
+        </button>
+      </div>
     </div>
   );
 };
