@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import BlogCard from "./BlogCard";
+import { BlogContext } from "../Provider/Blogprovider";
 
-const Pagination = ({ allBlog }) => {
+const Pagination = () => {
+  const allBlog = useContext(BlogContext);
   const blogsPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -17,13 +19,11 @@ const Pagination = ({ allBlog }) => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  console.log(currentBlogs);
   return (
     <>
       <div className=" mt-20 grid grid-cols-4 gap-5">
         {currentBlogs?.map((blog) => (
-          <BlogCard key={blog._id} blog={blog}/>
+          <BlogCard key={blog._id} blog={blog} />
         ))}
       </div>
       <nav

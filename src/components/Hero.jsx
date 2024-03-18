@@ -9,7 +9,7 @@ const Hero = () => {
           
           <span className="text-transparent bg-gradient-to-r from-[#E9A52C] to-[#E7662C] bg-clip-text">
             Empowering
-          </span>{" "}
+          </span>
           Minds, Inspiring Journeys: Explore, Learn, Grow.
         </h1>
         <p>
