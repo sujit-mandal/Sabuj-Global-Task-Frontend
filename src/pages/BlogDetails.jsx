@@ -1,20 +1,18 @@
 import { useParams } from "react-router-dom";
-import blogImageOne from "../assets/post 1.png";
-import blogImageTwo from "../assets/post 2.png";
 import Pagination from "../components/Pagination";
 import StudentInfo from "../components/StudentInfo";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Homebutton from "../components/Homebutton";
 const BlogDetails = () => {
   const params = useParams();
   const [blog, setBlog] = useState([]);
-  console.log(params);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5000/blog-details/${params.id}`
+          `https://server-lilac-five.vercel.app/blog-details/${params.id}`
         );
         setBlog(res.data);
       } catch (error) {
@@ -27,19 +25,16 @@ const BlogDetails = () => {
 
   console.log(blog);
   return (
-    <div className="max-w-screen-xl mx-auto mt-40">
+    <div className="max-w-screen-xl mx-auto mt-52">
+      <Homebutton />
       <div className="grid grid-cols-12 gap-10">
-        <div className="col-span-8 mt-20">
+        <div className="col-span-8 mt-5">
           <div>
             <h5 className="text-[#FF3D00] text-xl font-semibold">
               {blog?.category}
             </h5>
-            <h2 className="text-[40px] font-bold">
-              {blog?.title}
-            </h2>
-            <p className="text-2xl">
-              {blog?.shortDescription}
-            </p>
+            <h2 className="text-[40px] font-bold">{blog?.title}</h2>
+            <p className="text-2xl">{blog?.shortDescription}</p>
             <div className="flex items-center gap-5 mt-2">
               <img
                 src={blog?.userImage}
@@ -66,14 +61,14 @@ const BlogDetails = () => {
             </p>
           </div>
         </div>
-        <div className="col-span-4 mt-20">
+        <div className="col-span-4 mt-5">
           <StudentInfo />
         </div>
       </div>
       <div className="mt-10">
         <Pagination />
       </div>
-    </div> 
+    </div>
   );
 };
 

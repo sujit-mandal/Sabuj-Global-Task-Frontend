@@ -37,6 +37,7 @@ const Modal = ({ setShowModal }) => {
   const handleMoveToDetails = () => {
     if (filteredBlogs.length > 0) {
       navigate("/filtered-blogs", { state: { filteredBlogs } });
+      setShowModal(false)
     } else {
       console.warn("No filtered blogs to display");
     }

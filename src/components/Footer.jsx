@@ -59,8 +59,8 @@ const Footer = () => {
 
       <div className="bg-black text-white">
         <div className="max-w-screen-xl mx-auto flex items-center justify-between py-5">
-          <p className="font-light text-xl">Copyright © 2024 SG Education</p>
-          <ul className="flex items-center gap-3 font-light text-xl">
+          <p className="font-light">Copyright © 2024 SG Education</p>
+          <ul className="flex items-center gap-3 font-light">
             <li className="cursor-pointer">Disclaimer</li>
             <li className="border-l-[1px] border-white pl-3 cursor-pointer">
               Privacy Policy

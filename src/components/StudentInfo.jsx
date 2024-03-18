@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 const StudentInfo = () => {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -25,9 +26,10 @@ const StudentInfo = () => {
       console.log("Form submitted:", formDataFromInputs);
       setErrorMessage(null);
       axios.post(
-        "http://localhost:5000/post-student-info",
+        "https://server-lilac-five.vercel.app/post-student-info",
         formDataFromInputs
       );
+      toast.success("Form submitted successfully")
       formRef.current.reset();
     } else {
       setErrorMessage("Please check the form for any errors.");

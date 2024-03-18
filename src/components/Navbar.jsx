@@ -1,4 +1,3 @@
-import { useContext, useEffect, useState } from "react";
 import cardImageOne from "../assets/image1.png";
 import cardImageTwo from "../assets/image2.png";
 import cardImageThree from "../assets/image3.png";
@@ -6,11 +5,10 @@ import "./Navbar.css";
 import Modal from "./Modal";
 import Topnav from "./Topnav";
 import { Link } from "react-router-dom";
-import { BlogContext } from "../Provider/Blogprovider";
+import { useState } from "react";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
-
   return (
     <>
       <Topnav />
@@ -33,7 +31,7 @@ const Navbar = () => {
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
                         src={cardImageOne}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <Link
@@ -48,24 +46,30 @@ const Navbar = () => {
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
                         src={cardImageTwo}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
-                      <a href="#!" className="text-lg font-Poppins">
+                      <Link
+                        to={"https://www.shabujglobal.com"}
+                        className="text-lg font-Poppins"
+                      >
                         Study UI in SG
-                      </a>
+                      </Link>
                     </div>
                   </ul>
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
                         src={cardImageThree}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
-                      <a href="#!" className="text-lg font-Poppins">
+                      <Link
+                        to={"https://www.shabujglobal.com"}
+                        className="text-lg font-Poppins"
+                      >
                         Study UI in SG
-                      </a>
+                      </Link>
                     </div>
                   </ul>
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 pb-6 pt-6 lg:pt-3">
@@ -76,24 +80,36 @@ const Navbar = () => {
                         </a>
                       </li>
                       <li>
-                        <a href="#!" className="text-lg font-Poppins">
-                          Study UI in SG
-                        </a>
+                        <Link
+                          to={"https://www.shabujglobal.com"}
+                          className="text-lg font-Poppins"
+                        >
+                          Study UI in UK
+                        </Link>
                       </li>
                       <li>
-                        <a href="#!" className="text-lg font-Poppins">
+                        <Link
+                          to={"https://www.shabujglobal.com"}
+                          className="text-lg font-Poppins"
+                        >
                           Study Biotech in Japan
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#!" className="text-lg font-Poppins">
+                        <Link
+                          to={"https://www.shabujglobal.com"}
+                          className="text-lg font-Poppins"
+                        >
                           Study CSE In UK
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="#!" className="text-lg font-Poppins">
+                        <Link
+                          to={"https://www.shabujglobal.com"}
+                          className="text-lg font-Poppins"
+                        >
                           Study Agro in Nepal
-                        </a>
+                        </Link>
                       </li>
                     </ul>
                   </ul>
@@ -115,37 +131,46 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageOne}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://plus.unsplash.com/premium_photo-1663079426406-1b82fed16a79?q=80&w=2115&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
-                      <a href="#!" className="text-lg font-Poppins">
+                      <Link
+                        to={"https://www.shabujglobal.com"}
+                        className="text-lg font-Poppins"
+                      >
                         Study UI in SG
-                      </a>
+                      </Link>
                     </div>
                   </ul>
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageTwo}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://plus.unsplash.com/premium_photo-1682974403675-a8c5ac3629b5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
-                      <a href="#!" className="text-lg font-Poppins">
+                      <Link
+                        to={"https://www.shabujglobal.com"}
+                        className="text-lg font-Poppins"
+                      >
                         Study UI in SG
-                      </a>
+                      </Link>
                     </div>
                   </ul>
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageThree}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://images.unsplash.com/photo-1623632306901-e509641e7191?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
-                      <a href="#!" className="text-lg font-Poppins">
+                      <Link
+                        to={"https://www.shabujglobal.com"}
+                        className="text-lg font-Poppins"
+                      >
                         Study UI in SG
-                      </a>
+                      </Link>
                     </div>
                   </ul>
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 pb-6 pt-6 lg:pt-3">
@@ -195,7 +220,19 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageOne}
+                        src="https://images.unsplash.com/photo-1547743052-3a5fec50cadf?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        alt="Louvre"
+                      />
+                      <a href="#!" className="text-lg font-Poppins">
+                        Study UI in SG
+                      </a>
+                    </div>
+                  </ul>
+                  <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
+                    <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
+                      <img
+                        src="https://images.unsplash.com/photo-1567206163313-9e34c830557a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
@@ -207,19 +244,7 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageTwo}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
-                        alt="Louvre"
-                      />
-                      <a href="#!" className="text-lg font-Poppins">
-                        Study UI in SG
-                      </a>
-                    </div>
-                  </ul>
-                  <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
-                    <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
-                      <img
-                        src={cardImageThree}
+                        src="https://plus.unsplash.com/premium_photo-1683841527901-d2d926709203?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
@@ -275,8 +300,8 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageOne}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://images.unsplash.com/photo-1530099486328-e021101a494a?q=80&w=2147&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <a href="#!" className="text-lg font-Poppins">
@@ -287,8 +312,8 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageTwo}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://images.unsplash.com/photo-1568392226616-67710680efd8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <a href="#!" className="text-lg font-Poppins">
@@ -299,8 +324,8 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageThree}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://images.unsplash.com/photo-1525715843408-5c6ec44503b1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <a href="#!" className="text-lg font-Poppins">
@@ -355,8 +380,8 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageOne}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://images.unsplash.com/photo-1536925155833-43e9c2b2f499?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <a href="#!" className="text-lg font-Poppins">
@@ -367,8 +392,8 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageTwo}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://images.unsplash.com/photo-1565022536102-f7645c84354a?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <a href="#!" className="text-lg font-Poppins">
@@ -379,8 +404,8 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageThree}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://images.unsplash.com/photo-1584697964479-60a5a1d11307?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <a href="#!" className="text-lg font-Poppins">
@@ -435,8 +460,8 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageOne}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://plus.unsplash.com/premium_photo-1661499767121-1979967e093f?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <a href="#!" className="text-lg font-Poppins">
@@ -447,8 +472,8 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageTwo}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://images.unsplash.com/photo-1508394522741-82ac9c15ba69?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <a href="#!" className="text-lg font-Poppins">
@@ -459,8 +484,8 @@ const Navbar = () => {
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 pb-6 pt-6 lg:pt-3">
                     <div className="relative my-4 overflow-hidden bg-cover bg-no-repeat">
                       <img
-                        src={cardImageThree}
-                        className="w-full rounded-md shadow-lg dark:shadow-black/10 mb-3"
+                        src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        className="w-full h-44 rounded-md shadow-lg dark:shadow-black/10 mb-3"
                         alt="Louvre"
                       />
                       <a href="#!" className="text-lg font-Poppins">

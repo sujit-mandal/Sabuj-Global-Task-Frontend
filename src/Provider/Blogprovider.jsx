@@ -8,7 +8,7 @@ const Blogprovider = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const blog = await axios.get("http://localhost:5000/all-blogs");
+        const blog = await axios.get("https://server-lilac-five.vercel.app/all-blogs");
         setAllBlog(blog.data);
       } catch (error) {
         console.error("Error fetching data:", error);
