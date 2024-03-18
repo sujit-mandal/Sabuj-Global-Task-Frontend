@@ -21,7 +21,8 @@ const Pagination = () => {
   };
   return (
     <>
-      <div className=" mt-20 grid grid-cols-4 gap-5">
+    <h3 className="mt-20 font-bold text-4xl">Read Next</h3>
+      <div className=" mt-10 grid grid-cols-4 gap-5">
         {currentBlogs?.map((blog) => (
           <BlogCard key={blog._id} blog={blog} />
         ))}

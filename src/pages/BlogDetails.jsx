@@ -73,7 +73,7 @@ const BlogDetails = () => {
       <div className="mt-10">
         <Pagination />
       </div>
-    </div>
+    </div> 
   );
 };
 
